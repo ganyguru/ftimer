@@ -1,0 +1,14 @@
+.panda
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin:auto;
+	width: 100px;
+	height: 140px;
+	background: url(panda.svg);
+	background-size: 1200px 280px;
+	background-position: 0px -140px;
+}

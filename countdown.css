@@ -1,0 +1,258 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway|Allura|Roboto|Cabin:700|Rosario");
+
+
+@font-face {
+	font-family: 'DSDIGI';
+	src: url('./DSDIGI.eot');
+	src: local('DSDIGI'), url('./DSDIGI.woff') format('woff'), url('./DSDIGI.ttf') format('truetype');
+}
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/******************* CSS RESETS ENDS HERE ************************/
+
+/******************* MY CSS STARTS HERE **************************/
+.panda
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin:auto;
+	width: 100px;
+	height: 140px;
+	background: url(panda.svg);
+	background-size: 1200px 280px;
+	background-position: 0px -140px;
+}
+.earth
+{
+	position: absolute;
+	top:  calc( 50% + 70px );
+	width: 180px;
+	height: 180px;
+	left: 50%;
+	margin-left: -90px;
+	background: url(earth.png);
+	background-size: 180px 180px
+}
+body {
+	background-color: #0d0020;
+}
+
+h1 {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	color: white;
+	text-align: center;
+	font-size: 70px;
+	margin-top: 2%;
+	font-family: Raleway;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+
+hr {
+	display: block;
+	margin-top: 2%;
+	margin-bottom: -6%;
+	width: 50%;
+}
+
+h1:hover{
+	color: #F26964;
+	transition-property: all;
+	transition-duration: 0.5s;
+	transition-timing-function: ease-out;
+}
+
+.container {
+	width: 50%;
+	height: auto;
+	margin-top: 5%;
+	//margin-left: auto;
+	//margin-right: auto;
+}
+
+#time {
+	width:25%;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 10px;
+	font-size: 35px;
+	font-family: 'Cabin';
+	font-weight: bolder;
+	font-size:30px;
+	text-align: center;
+	color: #FFF2E7;
+}
+
+#timer {
+	font-family: 'DSDIGI';
+	text-align: center;
+	padding-top: 4%;
+	font-size: 100px;
+	color: white;
+	position:absolute;
+	width:100%;
+	margin:0 auto;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+
+#point {
+	-moz-animation: blink 1s ease infinite;
+    -webkit-animation: blink 1s ease infinite;
+}
+
+/* Simple Animation */
+@-webkit-keyframes blink {
+	0% {
+		opacity: 1.0;
+  		text-shadow: 0 0 20px #00c6ff;
+	}
+
+	50% {
+    	opacity: 0;
+    	text-shadow: none;
+	}
+
+	100% {
+    	opacity: 1.0;
+    	text-shadow: 0 0 20px #00c6ff;
+	};
+}
+
+@-moz-keyframes mymove {
+    0% {
+        opacity: 1.0;
+        text-shadow: 0 0 20px #00c6ff;
+    }
+
+    50% {
+        opacity: 0;
+        text-shadow: none;
+    }
+
+    100% {
+        opacity: 1.0;
+        text-shadow: 0 0 20px #00c6ff;
+    };
+}
+
+
+.earthmove
+{
+ -webkit-animation: earthmove 10s infinite linear;
+  -moz-animation: earthmove 10s infinite linear;
+  -ms-animation: earthmove 10s infinite linear;
+  -o-animation: earthmove 10s infinite linear;
+  animation: earthmove 10s infinite linear; 
+
+}
+
+
+
+
+@keyframes earthmove {
+  from {
+     transform: rotate(0deg); 
+}    
+
+to {
+   transform: rotate(-360deg); 
+    
+  }
+
+
+}
+
+
+@-webkit-keyframes earthmove {
+  from {
+     -webkit-transform: rotate(0deg); 
+}    
+
+to {
+   -webkit-transform: rotate(-360deg); 
+    
+  }
+
+
+}
+
+
+@-moz-keyframes earthmove {
+  from {
+     -moz-transform: rotate(0deg); 
+}    
+
+to {
+   -moz-transform: rotate(-360deg); 
+    
+  }
+
+
+}
+
+
+@-ms-keyframes earthmove {
+  from {
+     -ms-transform: rotate(0deg); 
+}    
+
+to {
+   -ms-transform: rotate(-360deg); 
+    
+  }
+
+
+}
