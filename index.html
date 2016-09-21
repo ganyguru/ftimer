@@ -5,17 +5,46 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale = 1.0"/>
 	<link rel="stylesheet" href="countdown.css"></link>
+	<style>
+		.logo {
+			margin: : 0px;
+			padding: 0px;
+			position: fixed;
+			left: 0px;
+			bottom: 0px;
+		},
+		.logo1 {
+			margin: 10px;
+			width: 100px;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.logo1>img {
+			padding: 10px;
+		}
+		.logo2 {
+			width: 100px;
+			position: fixed;
+			top: -10px;
+			right: 0px;
+			display: inline-block;
+			background-color: white;
+		}
+	</style>
 </head>
 
 <body>
 	<header>
-		<h1 class="heading"><img src="logo_nc.png" width="50" ></h1>
+		<div class="logo1"> <img src="logo_nc.png" width="50" ></div>
+		<div class="logo2"> <img height="100px" src='cub.png' alt='cub'> </div>
 		<div class="panda"></div>
 		<div id="world"><div class="earth"></div></div>
 	</header> 
 	<div class="container">
 		<div id="timer"><span id="cd_m">00</span><span id="point">:</span><span id="cd_s">00</span></div>
 	</div>
+	<div class="logo"></div>
 	<div class="input">
 		<input type="button" value="Start" id="cd_start" />
 	    <input type="button" value="Pause" id="cd_pause" />
@@ -30,26 +59,30 @@
 	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="timer.js"></script>
 	<script type="text/javascript">
-
+		var logos = ['DC.png', 'eldia.png', 'legrand.jpg', 'sathya-logo.png', 'TheChennaiSilks.jpg'],
+			logoDiv = document.querySelector(".logo"),
+			count = 1;
+			logoDiv.innerHTML = `<img height="100px" src=${logos[0]} alt='Logo'>`;
+		setInterval(function() {
+			logoDiv.innerHTML = `<img height="100px" src=${logos[count]} alt='Logo'>`;
+			console.log(`${count} ... ${logos[count]}`);
+			(count < 4)? count++ : count = 0; 
+		}, 5000);
 		var panda,
 			i=11,
 			world = document.getElementById("world"),
 			earth,
 			state = 0;
-
 		$(document).ready(function(){
 			$(".panda").css({"background-position": "-"+(100*i)+"px -140px"})
 			document.getElementById("cd_pause").disabled = true;
 			document.getElementById("cd_stop").disabled = true;
 		});
-
 		function start(){ 			
 			document.getElementById("cd_pause").disabled = false;
 			document.getElementById("cd_stop").disabled = false;
-
 			clearInterval(panda);
 			earth = document.querySelector(".earthmove");
-
 			if(state == 0) {
 				world.innerHTML = "<div class='earth earthmove'></div>";
 				i=11;
@@ -66,7 +99,6 @@
 					i=11;
 			},100);
 		}
-
 		function pause() {
 			clearInterval(panda);
 			earth = document.querySelector(".earthmove");
@@ -75,7 +107,6 @@
 			state = 0.5;
 			document.getElementById("cd_pause").disabled = true;
 		}
-
 		function stop () {
 			clearInterval(panda);
 			i=11;
@@ -85,11 +116,9 @@
 			state = 0;
 			document.getElementById("cd_pause").disabled = true;
 			document.getElementById("cd_stop").disabled = true;
-
 		 	//$(".panda").css({"background-position": "-"+(100*i)+"px -140px"})//FIX - Pause
 			//world.innerHTML = "<div class='earth'></div>"; //FIX - Pause rotation
 		}
-
 		function reset () {
 			clearInterval(panda);
 			i=11;
@@ -99,7 +128,6 @@
 			document.getElementById("cd_pause").disabled = true;
 			document.getElementById("cd_stop").disabled = true;
 		}
-
 	</script>
 </body>
 </html>
