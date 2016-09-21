@@ -39,6 +39,12 @@ $(document).ready(function() {
                     m = parseInt(td%60);
                     td /= 60;
                     h = td;
+                    $('#' + $.APP.dir + '_start').val('Start');                    
+                    
+                    $.APP.state = 'stop';
+                    reset();
+                    $('#' + $.APP.dir + '_status').html('Stopped');
+
                     $.APP.dir = 'cd';
                     $('#' + $.APP.dir + '_ms').html($.APP.formatTimer(ms));
                     $('#' + $.APP.dir + '_s').html($.APP.formatTimer(s));
@@ -56,13 +62,13 @@ $(document).ready(function() {
                     
                     switch($.APP.state) {
                             
-                        case 'pause' :
+                        case 'pause' : 
                             
                             // resume timer
                             // get current timestamp (for calculations) and
                             // substract time difference between pause and now
-                            $.APP.t1 = $.APP.d1.getTime() - $.APP.td;                            
-                            
+                            $.APP.t1 = $.APP.d1.getTime() - $.APP.td;  
+
                         break;
                             
                         default :
@@ -81,6 +87,7 @@ $(document).ready(function() {
                     
                     // reset state
                     $.APP.state = 'alive';   
+                    start();
                     $('#' + $.APP.dir + '_status').html('Running');
                     
                     // start loop
@@ -102,6 +109,7 @@ $(document).ready(function() {
                     15
                     // set state
                     $.APP.state = 'pause';
+                    pause();
                     $('#' + $.APP.dir + '_status').html('Paused');
                     
                 },
@@ -113,6 +121,7 @@ $(document).ready(function() {
                     
                     // set state
                     $.APP.state = 'stop';
+                    stop();
                     $('#' + $.APP.dir + '_status').html('Stopped');
                     
                 },
@@ -129,6 +138,7 @@ $(document).ready(function() {
                     
                     // set state
                     $.APP.state = 'reset';  
+                    reset();
                     $('#cdstatus').html('Reset & Idle again');
                     
                 },

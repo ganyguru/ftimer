@@ -11,10 +11,10 @@
 	<header>
 		<h1 class="heading"><img src="logo_nc.png" width="50" ></h1>
 		<div class="panda"></div>
-		<div class="earth earthmove"></div>
+		<div id="world"><div class="earth"></div></div>
 	</header> 
 	<div class="container">
-		<div id="timer"><span id="minus">-</span><span id="cd_m">00</span><span id="point">:</span><span id="cd_s">00</span></div>
+		<div id="timer"><span id="cd_m">00</span><span id="point">:</span><span id="cd_s">00</span></div>
 	</div>
 	<div class="input">
 		<input type="button" value="Start" id="cd_start" />
@@ -30,23 +30,76 @@
 	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript" src="timer.js"></script>
 	<script type="text/javascript">
+
+		var panda,
+			i=11,
+			world = document.getElementById("world"),
+			earth,
+			state = 0;
+
 		$(document).ready(function(){
+			$(".panda").css({"background-position": "-"+(100*i)+"px -140px"})
+			document.getElementById("cd_pause").disabled = true;
+			document.getElementById("cd_stop").disabled = true;
+		});
 
-			// $('#timer').countdown('2016/08/04 18:00:00 GMT+530 (IST)', function(event) {
-			// 	$(this).html(event.strftime('<span id="cd_d">%D</span><span id="cd_h">%H</span><span id="point">:</span><span id="cd_m">%M</span><span id="point">:</span><span id="cd_s">%S</span>'));
-			// 	$("#cd_h").html(parseInt($("#cd_d").html(),10)*24+parseInt($("#cd_h").html(),10));
-			// 	$("#cd_d").hide();
+		function start(){ 			
+			document.getElementById("cd_pause").disabled = false;
+			document.getElementById("cd_stop").disabled = false;
 
-			// });
-			var i=11;
-			setInterval(function(){
+			clearInterval(panda);
+			earth = document.querySelector(".earthmove");
+
+			if(state == 0) {
+				world.innerHTML = "<div class='earth earthmove'></div>";
+				i=11;
+				state = 1;
+			}
+			else if(state == 0.5 && earth) {
+				earth.style.animationPlayState="running";
+				state = 1;
+			}
+			panda = setInterval(function(){
 				$(".panda").css({"background-position": "-"+(100*i)+"px -140px"})
 				i--;
 				if(i<0)
 					i=11;
 			},100);
+		}
 
-		});
+		function pause() {
+			clearInterval(panda);
+			earth = document.querySelector(".earthmove");
+			if(earth)
+				earth.style.animationPlayState="paused";
+			state = 0.5;
+			document.getElementById("cd_pause").disabled = true;
+		}
+
+		function stop () {
+			clearInterval(panda);
+			i=11;
+			earth = document.querySelector(".earthmove");
+			if(earth)
+				earth.style.animationPlayState="paused";
+			state = 0;
+			document.getElementById("cd_pause").disabled = true;
+			document.getElementById("cd_stop").disabled = true;
+
+		 	//$(".panda").css({"background-position": "-"+(100*i)+"px -140px"})//FIX - Pause
+			//world.innerHTML = "<div class='earth'></div>"; //FIX - Pause rotation
+		}
+
+		function reset () {
+			clearInterval(panda);
+			i=11;
+			$(".panda").css({"background-position": "-"+(100*i)+"px -140px"})
+			world.innerHTML = "<div class='earth'></div>";
+			state = 0;
+			document.getElementById("cd_pause").disabled = true;
+			document.getElementById("cd_stop").disabled = true;
+		}
+
 	</script>
 </body>
 </html>
