@@ -256,3 +256,43 @@ to {
 
 
 }
+
+input[type="text"] {
+	background-color: inherit;
+	box-shadow: none;
+	outline: none;
+	border: 1px solid white;
+	color:white !important;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border: 2.5px solid white;
+	border-radius: 0.3em;
+}
+
+input:focus::-webkit-input-placeholder {
+ 	color:transparent;
+ 	font-weight: lighter;
+}
+
+input:focus:-moz-placeholder { 
+	color:transparent;
+ 	font-weight: lighter;
+}
+
+input:focus::-moz-placeholder {
+	color:transparent;
+ 	font-weight: lighter;
+}
+
+input:focus:-ms-input-placeholder {
+	color:transparent;
+ 	font-weight: lighter;
+}
+
+.input {
+	position:fixed;
+	bottom:0;
+	right:0;
+	color:white;
+}
